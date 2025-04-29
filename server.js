@@ -19,7 +19,7 @@ app.post('/login', (req, res) => {
     }
 
     if (row) {
-      return res.json({ success: true, redirectUrl: '/menuprincipal.html' });
+      return res.json({ success: true, redirectUrl: '/menuprincipal-ajustado.html' });
     } else {
       return res.status(401).json({ success: false, message: 'Usuário ou senha incorretos' });
     }
@@ -54,8 +54,23 @@ app.post('/api/publicar-quadra', (req, res) => {
     if (err) {
       return res.status(500).json({ success: false, message: 'Erro ao publicar quadra.' });
     }
-    return res.json({ success: true, redirectUrl: '/menuprincipal.html' });
+    return res.json({ success: true, redirectUrl: '/menuprincipal-ajustado.html' });
   });
+});
+
+// Rota para o menu principal
+app.get('/menu', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'menuprincipal.html'));
+});
+
+// Rota para a página de menu em destaque
+app.get('/menu-destaque', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'menuemdestaque.html'));
+});
+
+// 🔥 Rota para a página de Principais Eventos
+app.get('/eventos', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'principaiseventos.html'));
 });
 
 app.listen(PORT, () => {
