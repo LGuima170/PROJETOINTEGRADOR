@@ -76,3 +76,13 @@ app.get('/eventos', (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Servidor rodando em http://localhost:${PORT}`);
 });
+
+// Rota para a página de "Esqueci a senha"
+app.get('/esqueci-senha', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'Esqueci a senha.html'));
+});
+
+// Rota para a página de "Nova Senha"
+app.get('/nova-senha', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'Nova senha.html'));
+});
