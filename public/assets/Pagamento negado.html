@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento Negado</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fff0f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .background-shape {
+      position: absolute;
+      filter: blur(5px);
+      opacity: 0.9;
+      z-index: -1;
+      border-radius: 30px;
+    }
+
+    .shape1 {
+      width: 250px;
+      height: 250px;
+      top: -50px;
+      left: -50px;
+      border-radius: 50%;
+      background: #ff4d4d;
+    }
+
+    .shape2 {
+      width: 350px;
+      height: 300px;
+      bottom: 80px;
+      left: 40px;
+      background: #ff8080;
+      transform: rotate(20deg);
+    }
+
+    .shape3 {
+      width: 450px;
+      height: 350px;
+      top: 50px;
+      right: -120px;
+      background: #ff9999;
+      transform: rotate(-15deg);
+    }
+
+    .shape4 {
+      width: 100%;
+      height: 60px;
+      background: #ff4d4d;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container h2 {
+      color: #cc0000;
+      font-weight: 700;
+    }
+
+    .container p {
+      font-size: 18px;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .emoji {
+      font-size: 48px;
+    }
+
+    .button {
+      background: #cc0000;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background: #a80000;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-shape shape1"></div>
+  <div class="background-shape shape2"></div>
+  <div class="background-shape shape3"></div>
+  <div class="background-shape shape4"></div>
+
+  <div class="container">
+    <div class="emoji">❌</div>
+    <h2>Pagamento Recusado</h2>
+    <p>Ocorreu um erro ao processar o pagamento.<br>Verifique seus dados ou tente novamente.</p>
+    <button class="button" onclick="window.location.href='/'">Tentar Novamente</button>
+  </div>
+</body>
+</html>
