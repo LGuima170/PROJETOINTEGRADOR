@@ -107,11 +107,13 @@ app.get('/nova-senha', (req, res) => {
 
 // Rota de cadastro
 app.post('/api/cadastrar', (req, res) => {
-  const { nome, usuario, senha, email } = req.body;
+  const { nome, senha, email, telefone } = req.body;
+
+  const usuario = email; // Define o campo 'usuario' como o email
 
   db.run(
-    `INSERT INTO usuarios (nome, usuario, senha, email) VALUES (?, ?, ?, ?)`,
-    [nome, usuario, senha, email],
+    `INSERT INTO usuarios (nome, usuario, senha, email, telefone) VALUES (?, ?, ?, ?, ?)`,
+    [nome, usuario, senha, email, telefone],
     function (err) {
       if (err) {
         console.error(err.message);
@@ -121,6 +123,7 @@ app.post('/api/cadastrar', (req, res) => {
     }
   );
 });
+
 
 // Rota de publicação de quadra
 app.post('/api/publicar-quadra', (req, res) => {
