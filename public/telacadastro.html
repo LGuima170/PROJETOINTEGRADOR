@@ -147,9 +147,9 @@
                 <label>Email</label>
                 <input type="email" name="email" placeholder="Digite seu email" required />
             </div>
-           <div class="input-group">
+            <div class="input-group">
                 <label>Telefone</label>
-                <input type="tel" name="usuario" placeholder="Informe o seu telefone" required />
+                <input type="tel" name="telefone" placeholder="Informe o seu telefone" />
             </div>
             <div class="input-group">
                 <label>Senha</label>
@@ -179,6 +179,8 @@
                 return;
             }
 
+            dados.usuario = dados.email; // Definir email como identificador de login
+
             try {
                 const res = await fetch('/api/cadastrar', {
                     method: 'POST',
@@ -202,3 +204,4 @@
     </script>
 </body>
 </html>
+
