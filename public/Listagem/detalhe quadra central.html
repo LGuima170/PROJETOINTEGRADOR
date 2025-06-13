@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Detalhes da Quadra Poliesportiva Central</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alinha o conteúdo ao topo */
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f8ff;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+            /* REMOVIDO: overflow: hidden; */ /* Esta linha foi removida para permitir a rolagem */
+        }
+
+        .background-shape {
+            position: absolute;
+            filter: blur(5px);
+            opacity: 0.7;
+            z-index: -1;
+            border-radius: 30px;
+            /* ADICIONADO: */
+            overflow: hidden; /* Garante que as formas não causem rolagem externa, se necessário */
+        }
+
+        /* As formas de fundo podem precisar de ajustes de posicionamento
+           para não aparecerem cortadas quando a página rolar.
+           Por exemplo, você pode fixá-las à viewport com 'position: fixed;'
+           ou garantir que cubram áreas grandes o suficiente. */
+
+        .shape1 {
+            width: 250px;
+            height: 250px;
+            top: -50px;
+            left: -50px;
+            border-radius: 50%;
+            background: #2bbf2b;
+        }
+
+        .shape2 {
+            width: 350px;
+            height: 300px;
+            bottom: 80px;
+            right: 40px;
+            background: #00ff6a;
+            transform: rotate(20deg);
+        }
+
+        .shape3 {
+            width: 450px;
+            height: 350px;
+            top: 50px;
+            left: -120px;
+            background: #32cd32;
+            transform: rotate(-15deg);
+        }
+
+        .shape4 {
+            width: 100%;
+            height: 60px;
+            background: #2bbf2b;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            /* Se a rolagem do body for grande, esta forma pode sair da vista.
+               Se quiser que ela permaneça no rodapé da tela visível, use:
+               position: fixed;
+               bottom: 0;
+               left: 0;
+               width: 100%;
+               z-index: -1; (ou 0, se precisar ficar acima de algo mas abaixo do conteúdo principal)
+            */
+        }
+
+        .detail-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 700px;
+            position: relative;
+            z-index: 1; /* Garante que o conteúdo esteja acima das formas de fundo */
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .detail-container h1 {
+            color: #2e8b57;
+            font-weight: 700;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .detail-container img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-item h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .detail-item p {
+            font-size: 1.05em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .detail-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .detail-item ul li {
+            background: #e6ffe6;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .button {
+            background: #2bbf2b;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background: #239923;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .detail-container {
+                padding: 20px;
+            }
+            .detail-container h1 {
+                font-size: 1.8em;
+            }
+            .detail-item h3 {
+                font-size: 1.1em;
+            }
+            .detail-item p, .detail-item ul li {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
+    <div class="background-shape shape3"></div>
+    <div class="background-shape shape4"></div>
+
+    <div class="detail-container">
+        <img src="imagens/quadra_poliesportiva_detalhes.jpg" alt="Visão ampla da Quadra Poliesportiva Central">
+        <h1>Detalhes da Quadra Poliesportiva Central</h1>
+
+        <div class="detail-item">
+            <h3>Localização:</h3>
+            <p>Rua das Palmeiras, 123 - Centro, Cidade Exemplo, Estado.</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>Modalidades Suportadas:</h3>
+            <ul>
+                <li>Futebol de Salão (Futsal)</li>
+                <li>Basquete (Basquetebol)</li>
+                <li>Vôlei (Voleibol)</li>
+                <li>Handebol</li>
+            </ul>
+        </div>
+
+        <div class="detail-item">
+            <h3>Horário de Funcionamento:</h3>
+            <p>A quadra está disponível de **Segunda a Sexta-feira**, das **8h00 às 22h00**. Aos **Sábados**, das **9h00 às 18h00**. Fechada aos Domingos e feriados nacionais.</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>Infraestrutura:</h3>
+            <p>A Quadra Poliesportiva Central conta com piso de madeira de alta qualidade, iluminação LED de última geração, placar eletrônico, vestiários com chuveiros e armários, e bebedouros.</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>Regras de Uso:</h3>
+            <ul>
+                <li>Uso obrigatório de calçados apropriados para esportes de quadra.</li>
+                <li>Proibido o consumo de alimentos e bebidas na área de jogo.</li>
+                <li>É necessário agendamento prévio para grupos e eventos.</li>
+                <li>Respeitar os horários de uso e a vez de outros jogadores.</li>
+            </ul>
+        </div>
+
+        <div class="detail-item">
+            <h3>Contato para Agendamento:</h3>
+            <p>Telefone: (61) 3333-2128 | E-mail: contato@quadrapoliesportiva.com</p>
+        </div>
+    </div>
+
+    <a href="listagem_quadras.html" class="button">Voltar para a Listagem de Quadras</a>
+
+</body>
+</html>

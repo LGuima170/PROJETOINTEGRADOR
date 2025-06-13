@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Listagem de Quadras Esportivas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alinha o conteúdo ao topo */
+            align-items: center;
+            min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
+            background: #f0f8ff;
+            position: relative;
+            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+            padding: 20px; /* Adiciona um padding para o conteúdo não ficar grudado nas bordas */
+            box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+        }
+
+        .background-shape {
+            position: absolute;
+            filter: blur(5px);
+            opacity: 0.7; /* Suavizei um pouco a opacidade para o conteúdo se destacar mais */
+            z-index: -1;
+            border-radius: 30px;
+        }
+
+        .shape1 {
+            width: 250px;
+            height: 250px;
+            top: -50px;
+            left: -50px;
+            border-radius: 50%;
+            background: #2bbf2b;
+        }
+
+        .shape2 {
+            width: 350px;
+            height: 300px;
+            bottom: 80px;
+            right: 40px; /* Mudei para a direita para equilibrar */
+            background: #00ff6a;
+            transform: rotate(20deg);
+        }
+
+        .shape3 {
+            width: 450px;
+            height: 350px;
+            top: 50px;
+            left: -120px; /* Mudei para a esquerda */
+            background: #32cd32;
+            transform: rotate(-15deg);
+        }
+
+        .shape4 {
+            width: 100%;
+            height: 60px;
+            background: #2bbf2b;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2e8b57;
+            font-weight: 700;
+            font-size: 2.2em;
+            width: 100%; /* Garante que o cabeçalho ocupe a largura total */
+            max-width: 900px; /* Limita a largura para melhor leitura */
+            padding: 10px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .court-list-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout responsivo com colunas */
+            gap: 25px; /* Espaçamento entre os cards */
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+            width: 100%;
+            max-width: 900px; /* Largura máxima para o container da lista */
+            z-index: 1;
+            margin-bottom: 50px; /* Espaço para o shape4 no rodapé */
+        }
+
+        .court-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Para empurrar o botão para baixo */
+        }
+
+        .court-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .court-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .court-info {
+            padding: 15px;
+            flex-grow: 1; /* Permite que o conteúdo de texto ocupe o espaço disponível */
+        }
+
+        .court-info h3 {
+            color: #2e8b57;
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1.4em;
+        }
+
+        .court-info p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background: #2bbf2b;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            width: calc(100% - 30px); /* Ajusta a largura do botão com padding */
+            margin: 0 15px 15px 15px; /* Margem para o botão dentro do card */
+            align-self: center; /* Centraliza o botão */
+        }
+
+        .button:hover {
+            background: #239923;
+        }
+
+        /* Responsividade básica */
+        @media (max-width: 768px) {
+            .court-list-container {
+                grid-template-columns: 1fr; /* Uma coluna em telas menores */
+            }
+            .header {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            .court-card img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
+    <div class="background-shape shape3"></div>
+    <div class="background-shape shape4"></div>
+
+    <h1 class="header">Quadras Esportivas Disponíveis</h1>
+
+    <div class="court-list-container">
+        <div class="court-card">
+            <img src="quadra1.jpg" alt="Quadra Poliesportiva Central">
+            <div class="court-info">
+                <h3>Quadra Poliesportiva Central</h3>
+                <p>Localização: Rua das Palmeiras, 123 - Centro</p>
+                <p>Modalidades: Futebol de Salão, Basquete, Vôlei.</p> 
+                <p>Disponibilidade: Aberta das 8h às 22h.</p>
+            </div>
+            <button class="button" onclick="alert('Detalhes da Quadra Poliesportiva Central')">Ver Detalhes</button>
+        </div>
+
+        <div class="court-card">
+            <img src="quadra2.jpg" alt="Quadra de Tênis do Clube">
+            <div class="court-info">
+                <h3>Quadra de Tênis Green Park</h3>
+                <p>Localização: Av. Atlântica, 456 - Bairro Verde</p>
+                <p>Modalidades: Tênis (saibro).</p>
+                <p>Disponibilidade: Agendamento prévio necessário.</p>
+            </div>
+            <button class="button" onclick="alert('Detalhes da Quadra de Basquete Green Park')">Ver Detalhes</button>
+        </div>
+
+        <div class="court-card">
+            <img src="quadra3.jpg" alt="Campo de Futebol Society">
+            <div class="court-info">
+                <h3>Campo de Futebol Society</h3>
+                <p>Localização: Travessa Esportiva, 789 - Vila Nova</p>
+                <p>Modalidades: Futebol Society.</p>
+                <p>Disponibilidade: Aluguel por hora.</p>
+            </div>
+            <button class="button" onclick="alert('Detalhes do Campo de Futebol Society')">Ver Detalhes</button>
+        </div>
+
+        <div class="court-card">
+            <img src="quadra6.png" alt="Quadra de Vôlei de Areia">
+            <div class="court-info">
+                <h3>Quadra de Vôlei de Areia Sol</h3>
+                <p>Localização: Praia do Sol, Quiosque 5</p>
+                <p>Modalidades: Vôlei de Praia, Futevôlei.</p>
+                <p>Disponibilidade: Aberta durante o dia.</p>
+            </div>
+            <button class="button" onclick="alert('Detalhes da Quadra de Vôlei de Areia Sol')">Ver Detalhes</button>
+        </div>
+
+        <div class="court-card">
+            <img src="quadra5.jpg" alt="Quadra de Basquete Interna">
+            <div class="court-info">
+                <h3>Quadra de Basquete Coberta</h3>
+                <p>Localização: Clube Atlântico, Setor G</p>
+                <p>Modalidades: Basquete.</p>
+                <p>Disponibilidade: Reservas em horários específicos.</p>
+            </div>
+            <button class="button" onclick="alert('Detalhes da Quadra de Basquete Coberta')">Ver Detalhes</button>
+        </div>
+
+        <div class="court-card">
+            <img src="quadra4.jpg" alt="Quadra de Beach Tennis">
+            <div class="court-info">
+                <h3>Quadra de Beach Tennis Areia Pura</h3>
+                <p>Localização: Parque Esportivo Municipal, Lote C</p>
+                <p>Modalidades: Beach Tennis.</p>
+                <p>Disponibilidade: Reservas por aplicativo.</p>
+            </div>
+            <button class="button" onclick="alert('Detalhes da Quadra de Beach Tennis Areia Pura')">Ver Detalhes</button>
+        </div>
+    </div>
+</body>
+</html>
