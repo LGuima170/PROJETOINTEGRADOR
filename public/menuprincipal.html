@@ -91,7 +91,7 @@ https://www.tooplate.com/view/2125-artxibition
             <div class="row">
                 <div class="col-lg-12">
                     <h2>EM DESTAQUE</h2>
-                    <span>Arena 61</span>
+                    <span id="destaque-nome">Carregando...</span>
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@ https://www.tooplate.com/view/2125-artxibition
             <div class="row">
                 <div class="col-lg-8">
                     <div class="left-image">
-                        <img src="assets/images/arena61.png" alt="party time">
+                        <img id="destaque-imagem" src="assets/images/venue-01.jpg" alt="quadra em destaque">
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -113,18 +113,18 @@ https://www.tooplate.com/view/2125-artxibition
                             </div>
                         </div>
                         <div class="down-content">
-                            <h4>Arena 61</h4>
-                            <ul>
-                                <li>Todos os dias</li>
-                                <li>07:00 - 00:00</li>
+                            <h4 id="destaque-titulo">Carregando...</h4>
+                            <ul id="destaque-info">
+                                <li>Carregando...</li>
+                                <li>Carregando...</li>
                             </ul>
                             <span><i class="fa fa-ticket"></i>Pagamento no local</span>
                             <div style="display: flex; gap: 10px;">
                                 <div class="main-dark-button">
-                                    <a href="ticket-details.html">Saiba mais</a>
+                                    <a href="teladealuguel.html">Saiba mais</a>
                                 </div>
                                 <div class="main-dark-button">
-                                    <a href="menuemdestaque.html">Ver destaque</a>
+                                    <a href="teladealuguel.html">Ver destaque</a>
                                 </div>
                             </div>                                               
                     </div>
@@ -143,28 +143,10 @@ https://www.tooplate.com/view/2125-artxibition
                     }>
                     <div class="next-shows">
                         <h4><i class="fa fa-clock-o"></i>Conheça lugares próximos de você</h4>
-                        <ul>
+                        <ul id="quadras-lista">
                             <li>
-                                <h5>Bola Cheia</h5>
-                                <span>Qua - Dom<br>07:30 - 23:00</span>
-                                <div class="icon-button">
-                                    <a href="teladealuguel.html">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <h5>Parque Leão</h5>
-                                <span>Todos os dias<br>09:00 - 19:00</span>
-                                <div class="icon-button">
-                                    <a href="teladealuguel.html">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <h5>Souza Fut7</h5>
-                                <span>Ter - Dom<br>7:00 - 00:00</span>
+                                <h5>Carregando...</h5>
+                                <span>Carregando...</span>
                                 <div class="icon-button">
                                     <a href="teladealuguel.html">
                                         <i class="fa fa-shopping-cart"></i>
@@ -243,27 +225,146 @@ https://www.tooplate.com/view/2125-artxibition
     
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
+    
+    <!-- Script para carregar quadras do banco de dados -->
+    <script>
+        // Função para formatar o tipo de quadra
+        function formatarTipo(tipo) {
+            const tipos = {
+                'gramado_sintetico': 'Gramado Sintético',
+                'society': 'Society',
+                'areia': 'Areia',
+                'cimento': 'Cimento',
+                'madeira': 'Madeira'
+            };
+            return tipos[tipo] || tipo;
+        }
+        
+        // Função para formatar a disponibilidade
+        function formatarDisponibilidade(quadra) {
+            const dias = {
+                'segunda': 'Segunda',
+                'terca': 'Terça',
+                'quarta': 'Quarta',
+                'quinta': 'Quinta',
+                'sexta': 'Sexta',
+                'sabado': 'Sábado',
+                'domingo': 'Domingo'
+            };
+            
+            const diaInicio = dias[quadra.dia_inicio] || quadra.dia_inicio;
+            const diaFim = dias[quadra.dia_fim] || quadra.dia_fim;
+            
+            return `${diaInicio} a ${diaFim}<br>${quadra.hora_inicio} - ${quadra.hora_fim}`;
+        }
+        
+        // Função para carregar e exibir as quadras
+        async function carregarQuadras() {
+            try {
+                const response = await fetch('/api/quadras');
+                const data = await response.json();
+                
+                if (data.success && data.quadras.length > 0) {
+                    const quadras = data.quadras;
+                    
+                    // Definir a primeira quadra como destaque
+                    const quadraDestaque = quadras[0];
+                    
+                    // Preencher seção de destaque
+                    document.getElementById('destaque-nome').textContent = quadraDestaque.nome;
+                    document.getElementById('destaque-titulo').textContent = quadraDestaque.nome;
+                    document.getElementById('destaque-imagem').src = quadraDestaque.imagem_url || 'assets/images/venue-01.jpg';
+                    document.getElementById('destaque-imagem').alt = quadraDestaque.nome;
+                    
+                    // Preencher informações do destaque
+                    const destaqueInfo = document.getElementById('destaque-info');
+                    destaqueInfo.innerHTML = `
+                        <li>${formatarTipo(quadraDestaque.tipo)}</li>
+                        <li>${quadraDestaque.hora_inicio} - ${quadraDestaque.hora_fim}</li>
+                    `;
+                    
+                    // Preencher lista de quadras próximas (máximo 3)
+                    const quadrasLista = document.getElementById('quadras-lista');
+                    const quadrasParaExibir = quadras.slice(1, 4); // Pega as próximas 3 quadras
+                    
+                    if (quadrasParaExibir.length > 0) {
+                        quadrasLista.innerHTML = quadrasParaExibir.map(quadra => `
+                            <li>
+                                <h5>${quadra.nome}</h5>
+                                <span>${formatarDisponibilidade(quadra)}</span>
+                                <div class="icon-button">
+                                    <a href="teladealuguel.html">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        `).join('');
+                    } else {
+                        // Se não há outras quadras, mostrar mensagem
+                        quadrasLista.innerHTML = `
+                            <li>
+                                <h5>Nenhuma outra quadra disponível</h5>
+                                <span>Cadastre mais quadras para ver aqui</span>
+                                <div class="icon-button">
+                                    <a href="publiquesuaquadra.html">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        `;
+                    }
+                    
+                } else {
+                    // Se não há quadras cadastradas
+                    document.getElementById('destaque-nome').textContent = 'Nenhuma quadra cadastrada';
+                    document.getElementById('destaque-titulo').textContent = 'Nenhuma quadra cadastrada';
+                    document.getElementById('destaque-info').innerHTML = `
+                        <li>Cadastre a primeira quadra</li>
+                        <li>Ela aparecerá aqui em destaque</li>
+                    `;
+                    
+                    document.getElementById('quadras-lista').innerHTML = `
+                        <li>
+                            <h5>Nenhuma quadra disponível</h5>
+                            <span>Seja o primeiro a cadastrar uma quadra</span>
+                            <div class="icon-button">
+                                <a href="publiquesuaquadra.html">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                        </li>
+                    `;
+                }
+                
+            } catch (error) {
+                console.error('Erro ao carregar quadras:', error);
+                
+                // Em caso de erro, mostrar mensagem
+                document.getElementById('destaque-nome').textContent = 'Erro ao carregar';
+                document.getElementById('destaque-titulo').textContent = 'Erro ao carregar quadras';
+                document.getElementById('destaque-info').innerHTML = `
+                    <li>Não foi possível carregar as quadras</li>
+                    <li>Tente novamente mais tarde</li>
+                `;
+                
+                document.getElementById('quadras-lista').innerHTML = `
+                    <li>
+                        <h5>Erro ao carregar</h5>
+                        <span>Não foi possível carregar as quadras</span>
+                        <div class="icon-button">
+                            <a href="teladealuguel.html">
+                                <i class="fa fa-refresh"></i>
+                            </a>
+                        </div>
+                    </li>
+                `;
+            }
+        }
+        
+        // Carregar quadras quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarQuadras();
+        });
+    </script>
   </body>
-</html>
-
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/mixitup.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
-</body>
-
 </html>
