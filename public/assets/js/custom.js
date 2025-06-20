@@ -33,10 +33,16 @@
       let now = new Date().getTime(),
           distance = countDown - now;
 
-      document.getElementById('days').innerText = Math.floor(distance / (day)),
-        document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
-        document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
-        document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+      // Verificar se os elementos existem antes de acessá-los
+      const daysElement = document.getElementById('days');
+      const hoursElement = document.getElementById('hours');
+      const minutesElement = document.getElementById('minutes');
+      const secondsElement = document.getElementById('seconds');
+
+      if (daysElement) daysElement.innerText = Math.floor(distance / (day));
+      if (hoursElement) hoursElement.innerText = Math.floor((distance % (day)) / (hour));
+      if (minutesElement) minutesElement.innerText = Math.floor((distance % (hour)) / (minute));
+      if (secondsElement) secondsElement.innerText = Math.floor((distance % (minute)) / second);
 
       //do something later when date is reached
       //if (distance < 0) {

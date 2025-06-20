@@ -92,6 +92,50 @@
         </div>
         <button class="button">ENTRAR</button>
     </div>
-    <script src="script.js"></script>
+    <script>
+        // === LOGIN ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const botao = document.querySelector('.button');
+            const inputUsuario = document.querySelector('input[type="text"]');
+            const inputSenha = document.querySelector('input[type="password"]');
+
+            if (!botao || !inputUsuario || !inputSenha) return;
+
+            botao.addEventListener('click', async () => {
+                const usuario = inputUsuario.value.trim();
+                const senha = inputSenha.value;
+
+                if (!usuario || !senha) {
+                    alert('Preencha usuário e senha.');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ usuario, senha })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        window.location.href = result.redirectUrl;
+                    } else {
+                        alert(result.message || 'Erro no login');
+                    }
+                } catch (error) {
+                    alert('Erro ao conectar com o servidor.');
+                }
+            });
+
+            // Permitir login com Enter
+            inputSenha.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    botao.click();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

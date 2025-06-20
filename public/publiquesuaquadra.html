@@ -27,6 +27,43 @@ Tooplate 2125 ArtXibition
 https://www.tooplate.com/view/2125-artxibition
 
 -->
+    <style>
+        select, input[type="time"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: white;
+        }
+        
+        select:focus, input[type="time"]:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
+        
+        .fieldset-with-label {
+            margin-bottom: 20px;
+        }
+        
+        .fieldset-with-label label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .time-fields {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .time-fields .col-md-6 {
+            flex: 1;
+        }
+    </style>
     </head>
     
     <body>
@@ -70,7 +107,7 @@ https://www.tooplate.com/view/2125-artxibition
                           <li><a href="teladealuguel.html">Alugue uma quadra</a></li>
                           <li><a href="principaiseventos.html">Principais eventos</a></li>
                           <li><a href="publiquesuaquadra.html">Publicar uma quadra</a></li>
-                          <li><a href="telalogin.html">Login</a></li>
+                          <li><a href="/">Login</a></li>
                       </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -104,52 +141,113 @@ https://www.tooplate.com/view/2125-artxibition
                         <h4>Informações do espaço</h4>
                     </div>
                     <div class="contact-form">
-                        <form id="contact" action="" method="get" action="https://esporteagenda.infinityfreeapp.com/salvarAluguel.php">
+                        <form id="contact" method="post" enctype="multipart/form-data">
                           <div class="row">
+                            <!-- Informações Básicas -->
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
-                                <input name="name" type="text" id="nomeQuadra" placeholder="Nome do estabelecimento*" required="">
+                                <input name="nome" type="text" id="nomeQuadra" placeholder="Nome do estabelecimento*" required="">
                               </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
-                                <input name="Localização" type="text" id="localizacao" pattern="[^ @]*@[^ @]*" placeholder="Localização*" required="">
+                                <input name="localizacao" type="text" id="localizacao" placeholder="Localização*" required="">
+                              </fieldset>
+                            </div>
+
+                            <!-- Detalhes da Quadra -->
+                            <div class="col-lg-12">
+                                <div class="heading-text" style="margin-top: 20px; margin-bottom: 0;">
+                                    <h5>Detalhes da Quadra</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset class="fieldset-with-label">
+                                <label for="tipo">Tipo de quadra*</label>
+                                <select name="tipo" id="tipo" required="">
+                                  <option value="">Selecione o tipo de quadra</option>
+                                  <option value="gramado_sintetico">Gramado Sintético</option>
+                                  <option value="society">Society</option>
+                                  <option value="areia">Areia</option>
+                                  <option value="cimento">Cimento</option>
+                                  <option value="madeira">Madeira</option>
+                                </select>
                               </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="tipo" type="text" id="tipo" placeholder="Tipo (ex: gramado sintético)*" required="">
+                                <fieldset class="fieldset-with-label">
+                                  <label for="esportes">Esportes praticáveis*</label>
+                                  <input name="esportes" type="text" id="esportes" placeholder="Futebol, Vôlei, etc." required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <fieldset class="fieldset-with-label">
+                                    <label for="preco">Preço Por hora*</label>
+                                    <input name="preco" type="text" id="preco" placeholder="Ex: 50" required="">
+                                </fieldset>
+                            </div>
+                            
+                            <!-- Disponibilidade -->
+                            <div class="col-lg-12">
+                                <div class="heading-text" style="margin-top: 20px; margin-bottom: 0;">
+                                    <h5>Disponibilidade</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset class="fieldset-with-label">
+                                <label for="dia_inicio">Dia inicial de funcionamento*</label>
+                                <select name="dia_inicio" id="dia_inicio" required="">
+                                  <option value="">Selecione o dia inicial</option>
+                                  <option value="segunda">Segunda-feira</option>
+                                  <option value="terca">Terça-feira</option>
+                                  <option value="quarta">Quarta-feira</option>
+                                  <option value="quinta">Quinta-feira</option>
+                                  <option value="sexta">Sexta-feira</option>
+                                  <option value="sabado">Sábado</option>
+                                  <option value="domingo">Domingo</option>
+                                </select>
                               </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="esportes" type="text" id="tipo" placeholder="Esportes praticáveis*" required="">
+                              <fieldset class="fieldset-with-label">
+                                <label for="dia_fim">Dia final de funcionamento*</label>
+                                <select name="dia_fim" id="dia_fim" required="">
+                                  <option value="">Selecione o dia final</option>
+                                  <option value="segunda">Segunda-feira</option>
+                                  <option value="terca">Terça-feira</option>
+                                  <option value="quarta">Quarta-feira</option>
+                                  <option value="quinta">Quinta-feira</option>
+                                  <option value="sexta">Sexta-feira</option>
+                                  <option value="sabado">Sábado</option>
+                                  <option value="domingo">Domingo</option>
+                                </select>
                               </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="preco" type="text" id="preco" placeholder="Preços*" required="">
+                              <fieldset class="fieldset-with-label">
+                                <label for="hora_inicio">Horário de abertura*</label>
+                                <input name="hora_inicio" type="time" id="hora_inicio" required="">
                               </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="disponibilidade" type="text" id="disponibilidade" placeholder="Horário de funcionamento*" required="">
+                              <fieldset class="fieldset-with-label">
+                                <label for="hora_fim">Horário de fechamento*</label>
+                                <input name="hora_fim" type="time" id="hora_fim" required="">
                               </fieldset>
                             </div>
+
+                            <!-- Detalhes Finais -->
                             <div class="col-lg-12">
                               <fieldset>
                                 <textarea name="detalhes" rows="6" id="detalhes" placeholder="Detalhes diversos*" required=""></textarea>
                               </fieldset>
                             </div>
                             <div class="col-lg-12">
-                                <fieldset>
-                                    <form>
-                                        <button type="submit">Adicionar imagens</button>
-                                    </form>
-                                </fieldset>
-                              </div>
-                              <br>
-                              <br>
+                              <fieldset>
+                                <label for="imagem">Imagem da Quadra:</label>
+                                <input type="file" name="imagem" id="imagem" accept="image/png, image/jpeg, image/jpg" required="">
+                              </fieldset>
+                            </div>
                             <div class="col-lg-12">
                               <fieldset>
                                 <button type="submit" id="form-submit" class="main-dark-button">Enviar</button>
@@ -207,14 +305,10 @@ https://www.tooplate.com/view/2125-artxibition
         </div>
     </footer>
 
-    <!-- jQuery -->
+    <!-- Scripts -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
-
-    <!-- Bootstrap -->
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
@@ -223,29 +317,64 @@ https://www.tooplate.com/view/2125-artxibition
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <!-- Este script é específico para esta página e não contém o contador -->
+    <script src="assets/js/custom-publicar.js"></script>
+
+    <!-- Script para envio do formulário -->
+    <script>
+    // Validação dos campos de disponibilidade
+    function validarDisponibilidade() {
+        const diaInicio = document.getElementById('dia_inicio').value;
+        const diaFim = document.getElementById('dia_fim').value;
+        const horaInicio = document.getElementById('hora_inicio').value;
+        const horaFim = document.getElementById('hora_fim').value;
+        
+        const diasSemana = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+        const indiceInicio = diasSemana.indexOf(diaInicio);
+        const indiceFim = diasSemana.indexOf(diaFim);
+        
+        if (indiceInicio > indiceFim) {
+            alert('O dia final não pode ser anterior ao dia inicial!');
+            return false;
+        }
+        
+        if (horaInicio >= horaFim) {
+            alert('O horário de fechamento deve ser posterior ao horário de abertura!');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    document.getElementById('contact').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (!validarDisponibilidade()) {
+            return;
+        }
+        
+        const formData = new FormData(e.target);
+        
+        try {
+            const response = await fetch('/api/publicar-quadra', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok && result.success) {
+                alert('Quadra cadastrada com sucesso!');
+                window.location.href = result.redirectUrl;
+            } else {
+                alert(result.message || 'Erro ao cadastrar quadra. Verifique o console para mais detalhes.');
+                console.error('Server response:', result);
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            alert('Erro crítico ao conectar com o servidor.');
+        }
+    });
+    </script>
   </body>
-</html>
-
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/mixitup.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
-</body>
-
 </html>
