@@ -1,7 +1,7 @@
 # Projeto Integrador - Agenda Esportiva
 
-Este projeto tem como objetivo desenvolver uma aplicação voltada para a **gestão de treinos, partidas e eventos esportivos**.  
-A ferramenta foi pensada para facilitar a organização e oferecer maior praticidade para atletas, técnicos e equipes.
+Este projeto tem como objetivo desenvolver uma aplicação voltada para a **gestão de quadras esportivas**.  
+A ferramenta foi pensada para facilitar a organização e oferecer maior praticidade para atletas, equipes e gerentes.
 
 ---
 
@@ -23,6 +23,6 @@ A ferramenta foi pensada para facilitar a organização e oferecer maior pratici
 
 ## ⚙️ Como executar o projeto
 
-1. **Clone o repositório**
+1. **No terminal, digite npm install (caso não possua npm) e então npm run dev**
    ```bash
    git clone https://github.com/SEUUSUARIO/PROJETOINTEGRADOR.git
