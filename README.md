@@ -25,6 +25,7 @@ A ferramenta foi pensada para facilitar a organização e oferecer maior pratici
 
 1. **Instale as dependencias (se ainda não fez)**
    ```bash
+   npm install
    git clone https://github.com/SEUUSUARIO/PROJETOINTEGRADOR.git
 
 2. **Inicie o Servidor**
