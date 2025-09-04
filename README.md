@@ -23,7 +23,7 @@ A ferramenta foi pensada para facilitar a organização e oferecer maior pratici
 
 ## ⚙️ Como executar o projeto
 
-1. **Instale as dependencias (se ainda não fez) **
+1. **Instale as dependencias (se ainda não fez)**
    ```bash
    git clone https://github.com/SEUUSUARIO/PROJETOINTEGRADOR.git
 
