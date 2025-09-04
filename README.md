@@ -23,6 +23,10 @@ A ferramenta foi pensada para facilitar a organização e oferecer maior pratici
 
 ## ⚙️ Como executar o projeto
 
-1. **No terminal, digite npm install (caso não possua npm) e então npm run dev**
+1. **Instale as dependencias (se ainda não fez) **
    ```bash
    git clone https://github.com/SEUUSUARIO/PROJETOINTEGRADOR.git
+
+2. **Inicie o Servidor**
+```sh
+node server.js
