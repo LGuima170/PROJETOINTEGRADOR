@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Detalhes da Quadra de Beach Tennis Areia Pura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f8ff;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .background-shape {
+            position: absolute;
+            filter: blur(5px);
+            opacity: 0.7;
+            z-index: -1;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .shape1 {
+            width: 250px;
+            height: 250px;
+            top: -50px;
+            left: -50px;
+            border-radius: 50%;
+            background: #2bbf2b;
+        }
+
+        .shape2 {
+            width: 350px;
+            height: 300px;
+            bottom: 80px;
+            right: 40px;
+            background: #00ff6a;
+            transform: rotate(20deg);
+        }
+
+        .shape3 {
+            width: 450px;
+            height: 350px;
+            top: 50px;
+            left: -120px;
+            background: #32cd32;
+            transform: rotate(-15deg);
+        }
+
+        .shape4 {
+            width: 100%;
+            height: 60px;
+            background: #2bbf2b;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .detail-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .detail-container h1 {
+            color: #2e8b57;
+            font-weight: 700;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .detail-container img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-item h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .detail-item p {
+            font-size: 1.05em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .detail-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .detail-item ul li {
+            background: #e6ffe6;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .button {
+            background: #2bbf2b;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background: #239923;
+        }
+
+        @media (max-width: 768px) {
+            .detail-container {
+                padding: 20px;
+            }
+            .detail-container h1 {
+                font-size: 1.8em;
+            }
+            .detail-item h3 {
+                font-size: 1.1em;
+            }
+            .detail-item p, .detail-item ul li {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
+    <div class="background-shape shape3"></div>
+    <div class="background-shape shape4"></div>
+
+    <div class="detail-container">
+        <img src="imagens/quadra_beachtennis_detalhes.jpg" alt="Visão da Quadra de Beach Tennis Areia Pura">
+        <h1>Detalhes da Quadra de Beach Tennis Areia Pura</h1>
+
+        <div class="detail-item">
+            <h3>Localização:</h3>
+            <p>Parque Esportivo Municipal, Lote C, Cidade Exemplo, Estado.</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>Modalidades Suportadas:</h3>
+            <ul>
+                <li>Beach Tennis (Duplas)</li>
+                <li>Frescobol</li>
+            </ul>
+        </div>
+
+        <div class="detail-item">
+            <h3>Horário de Funcionamento:</h3>
+            <p>Disponível de **Segunda a Sábado**, das **7h00 às 20h00**. Fechada aos Domingos e feriados. Reservas obrigatórias via aplicativo.</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>Infraestrutura:</h3>
+            <p>Areia de quartzo fina e macia, rede ajustável, iluminação noturna de alta intensidade, chuveiros externos e vestiários próximos.</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>Regras de Uso:</h3>
+            <ul>
+                <li>Exclusivo para Beach Tennis e Frescobol.</li>
+                <li>Respeitar o tempo de uso da quadra (1 hora por agendamento).</li>
+                <li>Proibido entrar com alimentos e bebidas na área de areia.</li>
+                <li>Equipamentos (raquetes e bolas) não são fornecidos, mas podem ser alugados na recepção.</li>
+            </ul>
+        </div>
+
+        <div class="detail-item">
+            <h3>Contato para Agendamento:</h3>
+            <p>Telefone: (XX) XXXX-XXXX | Aplicativo: "Beach Tennis Fácil"</p>
+        </div>
+    </div>
+
+    <a href="listagem_quadras.html" class="button">Voltar para a Listagem de Quadras</a>
+
+</body>
+</html>
