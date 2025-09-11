@@ -4,8 +4,8 @@ Este projeto é um sistema que permite o **aluguel de quadras** de forma prátic
 Os usuários podem visualizar horários disponíveis, reservar quadras e gerenciar seus agendamentos em um ambiente simples e intuitivo.
 
 ## 🚀 Tecnologias Utilizadas
-- Linguagem principal: C (ou a linguagem que você está usando)
-- Banco de dados (se houver, ex: MySQL, SQLite)
+- Linguagem principal: HTML, CSS, JavaScript
+- Banco de dados
 - Outras ferramentas necessárias para rodar o sistema
 
 ## 📂 Estrutura do Projeto
