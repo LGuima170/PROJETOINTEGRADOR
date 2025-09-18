@@ -14,7 +14,7 @@ Os usuários podem visualizar horários disponíveis, reservar quadras e gerenci
 - `tests/` → testes (se houver)
 
 ## ⚙️ Como Executar
-**Instale as dependencias (se ainda não fez)**
+1. **Instale as dependencias (se ainda não fez)**
    ```bash
    npm install
    git clone https://github.com/SEUUSUARIO/PROJETOINTEGRADOR.git
