@@ -14,9 +14,9 @@ Os usuários podem visualizar horários disponíveis, reservar quadras e gerenci
 - `tests/` → testes (se houver)
 
 ## ⚙️ Como Executar
-1. **No terminal, digite npm install (caso não possua npm) e então npm run dev**
-1.1. **Instale as dependencias (se ainda não fez) **
+**Instale as dependencias (se ainda não fez)**
    ```bash
+   npm install
    git clone https://github.com/SEUUSUARIO/PROJETOINTEGRADOR.git
 
 2. **Inicie o Servidor**
