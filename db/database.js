@@ -8,6 +8,7 @@ db.serialize(() => {
       nome TEXT,
       usuario TEXT NOT NULL UNIQUE,
       senha TEXT NOT NULL
+      role TEXT DEFAULT 'user'
     )
   `);
 
